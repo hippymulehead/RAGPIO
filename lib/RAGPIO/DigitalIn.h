@@ -8,7 +8,7 @@ class DigitalIn
         DigitalIn(int pinNumber);
         virtual ~DigitalIn();
         operator int() const;
-        int read();
+        int value();
 
     protected:
         uint8_t m_timer;

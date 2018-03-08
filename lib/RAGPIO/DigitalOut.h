@@ -11,7 +11,7 @@ class DigitalOut {
         int operator = (int s);
         int operator ! () const {return !m_state;}
         operator int() const {return m_state;}
-        int read() {return m_state;}
+        int value() {return m_state;}
 
     protected:
         int m_state;

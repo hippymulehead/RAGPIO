@@ -37,7 +37,6 @@ void DigitalOut::setup(int pinNumber, int value) {
 
 int DigitalOut::operator= (int s) {
     m_state = s;
-    //bitWrite(*out, m_bit, m_state);
     if (m_state == LOW) {
 		*m_out &= ~m_bit;
 	} else {

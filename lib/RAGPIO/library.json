@@ -1,0 +1,20 @@
+{
+    "name": "RAGPIO",
+    "frameworks": "Arduino",
+    "keywords": "gpio,analogRead,analogWrite,digitalread,digitalwrite,replacement",
+    "description": "A C++ reworking of the GPIO calls for Arduino (Faster reads and writes!)",
+    "version": "1.0.0",
+    "url": "https://github.com/hippymulehead/RAGPIO",
+    "authors":
+    [
+        {
+            "name": "Michael Romans",
+            "maintainer": true
+        }
+    ],
+    "repository":
+    {
+        "type": "git",
+        "url": "https://github.com/hippymulehead/RAGPIO.git"
+    }
+}

@@ -16,7 +16,7 @@ DigitalIn::operator int() const {
     return LOW;
 }
 
-int DigitalIn::read() {
+int DigitalIn::value() {
     if (*portInputRegister(m_port) & m_bit) return HIGH;
     return LOW;
 }
