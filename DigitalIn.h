@@ -5,10 +5,12 @@
 class DigitalIn
 {
     public:
-        DigitalIn(int pinNumber);
+        DigitalIn();
+        DigitalIn(uint8_t pinNumber);
         virtual ~DigitalIn();
         operator int() const;
-        int value();
+        void setup(uint8_t pinNumber);
+        uint8_t value();
 
     protected:
         uint8_t m_timer;

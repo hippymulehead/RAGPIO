@@ -5,5 +5,7 @@
 #include <DigitalOut.h>
 #include <AnalogIn.h>
 #include <AnalogOut.h>
+#include <ShiftOut.h>
+#include <ShiftIn.h>
 
 #endif // RAGPIO_H_INCLUDED
