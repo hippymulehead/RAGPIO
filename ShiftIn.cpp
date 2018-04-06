@@ -1,5 +1,8 @@
 #include "ShiftIn.h"
 
+ShiftIn::ShiftIn() {
+}
+
 ShiftIn::ShiftIn(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder) {
     m_dataIn.setup(dataPin);
     m_clockOut.setup(clockPin,0);
@@ -7,7 +10,12 @@ ShiftIn::ShiftIn(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder) {
 }
 
 ShiftIn::~ShiftIn() {
+}
 
+void ShiftIn::setup(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder) {
+    m_dataIn.setup(dataPin);
+    m_clockOut.setup(clockPin,0);
+    m_bitOrder = bitOrder;
 }
 
 ShiftIn::operator uint8_t() const {

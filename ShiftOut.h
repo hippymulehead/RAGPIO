@@ -4,8 +4,10 @@
 
 class ShiftOut {
     public:
+        ShiftOut();
         ShiftOut(uint8_t latchPin, uint8_t clockPin, uint8_t dataPin, uint8_t bitOrder);
         virtual ~ShiftOut();
+        void setup(uint8_t latchPin, uint8_t clockPin, uint8_t dataPin, uint8_t bitOrder);
         uint8_t operator = (uint8_t s);
         operator uint8_t() const {return m_state;}
         uint8_t value() {return m_state;}
