@@ -7,7 +7,7 @@ class AnalogOut
     public:
         AnalogOut(int pinNumber);
         virtual ~AnalogOut();
-        int AnalogOut::operator= (int s);
+        int operator= (int s);
         int value();
         void setMap(int lowValue, int highValue);
 

@@ -4,14 +4,17 @@
 
 class ShiftIn {
     public:
-        ShiftIn(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder);
+        ShiftIn();
+        ShiftIn(uint8_t latchPin, uint8_t clockPin, uint8_t dataPin, uint8_t bitOrder);
         virtual ~ShiftIn();
+        void setup(uint8_t latchPin, uint8_t clockPin, uint8_t dataPin, uint8_t bitOrder);
         operator uint8_t() const;
         void setBitOrder(uint8_t bitOrder);
 
     protected:
         DigitalIn m_dataIn;
         DigitalOut m_clockOut;
+        DigitalOut m_latchOut;
         uint8_t m_bitOrder;
 
     private:
