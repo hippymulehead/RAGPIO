@@ -4,15 +4,26 @@
 
 class AnalogIn {
     public:
+        AnalogIn();
         AnalogIn(uint8_t pinToRead);
         virtual ~AnalogIn();
         operator int() const;
-        int asMapped(int lowValue, int highValue);
-        float asFloatMapped(float lowValue, float highValue);
+        operator float() const;
+        void createIntMap(int lowValue, int highValue);
+        void createFloatMap(float lowValue, float highValue);
+        void setADCDepth(uint8_t bits);
 
     protected:
         int         m_pin;
         uint8_t     analog_reference = DEFAULT;
+        uint8_t     m_isIntMapped = 0;
+        uint8_t     m_isFloatMapped = 0;
+        int         m_low = 0;
+        int         m_high = 1023;
+        int         m_iLowValue = 0;
+        int         m_iHighValue = 0;
+        float       m_fLowValue = 0.0;
+        float       m_fHighValue = 0.0;
         void analogReference(uint8_t mode) {
             analog_reference = mode;
         }

@@ -41,10 +41,14 @@ AnalogIn::operator int() const {
         low  = 0;
         high = 0;
     #endif
-	return (high << 8) | low;
+    if (m_isIntMapped == 1) {
+        return (high << 8) | low;
+    } else {
+        return map(((high << 8) | low),m_low,m_high,m_iLowValue,m_iHighValue);
+    }
 }
 
-int AnalogIn::asMapped(int lowValue, int highValue) {
+AnalogIn::operator float() const {
     uint8_t low, high;
     #if defined(ADMUX)
         ADMUX = (analog_reference << 6) | (m_pin & 0x07);
@@ -58,22 +62,28 @@ int AnalogIn::asMapped(int lowValue, int highValue) {
         low  = 0;
         high = 0;
     #endif
-	return map(((high << 8) | low),0,1023,lowValue,highValue);
+    if (m_isFloatMapped == 1) {
+        return map_to_float(((high << 8) | low),float(m_low),float(m_high),m_fLowValue,m_fHighValue);
+    } else {
+        int m_ret = (high << 8) | low;
+        return float(m_ret);
+    }
 }
 
-float AnalogIn::asFloatMapped(float lowValue, float highValue) {
-    uint8_t low, high;
-    #if defined(ADMUX)
-        ADMUX = (analog_reference << 6) | (m_pin & 0x07);
-    #endif
-    #if defined(ADCSRA) && defined(ADCL)
-        sbi(ADCSRA, ADSC);
-        while (bit_is_set(ADCSRA, ADSC));
-        low  = ADCL;
-        high = ADCH;
-    #else
-        low  = 0;
-        high = 0;
-    #endif
-	return map_to_float(((high << 8) | low),0,1023,lowValue,highValue);
+void AnalogIn::createIntMap(int lowValue, int highValue) {
+    m_iLowValue = lowValue;
+    m_iHighValue = highValue;
+}
+
+void AnalogIn::createFloatMap(float lowValue, float highValue) {
+    m_fLowValue = lowValue;
+    m_fHighValue = highValue;
+}
+
+void AnalogIn::setADCDepth(uint8_t bits) {
+    switch(bits) {
+        case 12: {m_high = 4095; break;}
+        case 8: {m_high = 255;};
+        default: {m_high = 1023;}
+    }
 }

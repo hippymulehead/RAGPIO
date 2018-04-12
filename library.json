@@ -3,7 +3,7 @@
     "frameworks": "Arduino",
     "keywords": "gpio,analogRead,analogWrite,digitalread,digitalwrite,shiftin,shiftout,replacement",
     "description": "A C++ reworking of the GPIO calls for Arduino (Faster reads and writes!)",
-    "version": "1.1.2",
+    "version": "1.2.0",
     "url": "https://github.com/hippymulehead/RAGPIO",
     "authors":
     [

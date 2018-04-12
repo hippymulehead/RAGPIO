@@ -5,6 +5,7 @@
 class AnalogOut
 {
     public:
+        AnalogOut();
         AnalogOut(int pinNumber);
         virtual ~AnalogOut();
         int operator= (int s);

@@ -3,6 +3,9 @@
 #include "pins_arduino.h"
 #include <DigitalOut.h>
 
+AnalogOut::AnalogOut() {
+}
+
 AnalogOut::AnalogOut(int pinNumber) {
     m_pin = pinNumber;
     pinMode(m_pin, OUTPUT);
